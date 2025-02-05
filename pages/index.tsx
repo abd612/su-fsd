@@ -109,7 +109,8 @@ const DataSorter: React.FC<propsType> = (props: propsType) => {
 };
 
 export const getServerSideProps = async () => {
-  const response = await fetch("http://localhost:3000/api/fetch-data");
+  const hostUrl = process.env.HOST_URL || "http://localhost:3000";
+  const response = await fetch(`${hostUrl}/api/fetch-data`);
   const responseJson = await response.json();
 
   return {
